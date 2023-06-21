@@ -1,0 +1,39 @@
+/*Creat a Lego Batman Store database*/
+
+CREATE TABLE Lego_Batman (Lego INTEGER PRIMARY KEY, name TEXT, pieces INTEGER, price INTEGER);
+
+INSERT INTO Lego_Batman 
+VALUES (1,"Batmobile",28 , 29.99);
+INSERT INTO Lego_Batman 
+VALUES (2,"Bat helicopter",45 , 44.99);
+INSERT INTO Lego_Batman 
+VALUES (3,"Bat mech",24 , 19.99);
+INSERT INTO Lego_Batman 
+VALUES (4,"Bat vs Superman",15, 9.99);
+INSERT INTO Lego_Batman 
+VALUES (5,"MR. Freeze",5 , 4.99);
+INSERT INTO Lego_Batman 
+VALUES (6,"Jokers Playhouse",67 , 89.99);
+INSERT INTO Lego_Batman 
+VALUES (7,"Bat-cave",150 , 119.99);
+INSERT INTO Lego_Batman 
+VALUES (8,"Batman's Highschool Prom",1000 , 399.99);
+INSERT INTO Lego_Batman 
+VALUES (9,"Batman who laughs",30 , 29.99);
+INSERT INTO Lego_Batman 
+VALUES (10,"Bane",21 , 19.99);
+INSERT INTO Lego_Batman 
+VALUES (11,"Bruce Wayne figure",4 , 4.99);
+INSERT INTO Lego_Batman 
+VALUES (12,"Wayne Manner",130 , 59.99);
+INSERT INTO Lego_Batman 
+VALUES (13,"Robin Glider",18 , 19.99);
+INSERT INTO Lego_Batman 
+VALUES (14,"Nightwing figure",5 , 4.99);
+INSERT INTO Lego_Batman 
+VALUES (15,"Bat-shark-spray",9 , 9.99);
+
+/*Display database order by price*/
+SELECT * FROM Lego_Batman ORDER BY price DESC;
+/*Sum total peice count of inventory*/
+SELECT SUM(pieces) FROM Lego_Batman;
