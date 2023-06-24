@@ -1,0 +1,64 @@
+/*Table for finding who stars in which star wars movie*/
+CREATE TABLE shows (id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT,
+stars_id TEXT);
+    
+INSERT INTO shows (title, stars_id)
+    VALUES ("The Phantom Menace", 1);  
+INSERT INTO shows (title, stars_id)
+    VALUES ("Attack of the Clones", 5);  
+INSERT INTO shows (title, stars_id)
+    VALUES ("The Clone Wars", 4);  
+INSERT INTO shows (title, stars_id)
+    VALUES ("Revenge of the Sith", 5);
+INSERT INTO shows (title, stars_id)
+    VALUES ("Kenobi", 1); 
+INSERT INTO shows (title, stars_id)
+    VALUES ("Rebels", 7); 
+INSERT INTO shows (title, stars_id)
+    VALUES ("Rogue1", "NULL"); 
+INSERT INTO shows (title, stars_id)
+    VALUES ("A New Hope", 6); 
+INSERT INTO shows (title, stars_id)
+    VALUES ("The Empire Strikes Back", 6); 
+INSERT INTO shows (title, stars_id)
+    VALUES ("Return of the Jedi", 6); 
+INSERT INTO shows (title, stars_id)
+    VALUES ("The Mandalorian", "NULL"); 
+
+CREATE TABLE Jedi (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT,
+    last_name TEXT);
+
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Obi Wan", "Kenobi");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Plo", "Koon");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Mace", "Windu");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Asoka", "Tano");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Anakin", "Skywalker");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Luke", "Skywalker");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Ezra", "Bridger");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Qui-Gon", "Jinn");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Yoda", "NULL");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Ki-Adi", "Mundi");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Aayla", "Secura");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Shaak", "Ti");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Quinlan", "Vos");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Luminara", "Unduli");
+INSERT INTO Jedi (first_name, last_name)
+    VALUES ("Kanan", "Jarrus");
+SELECT Jedi.first_name, Jedi.last_name, shows.title FROM shows JOIN Jedi
+ON shows.stars_id = Jedi.id;
