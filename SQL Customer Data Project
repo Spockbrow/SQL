@@ -1,0 +1,32 @@
+/*How many orders were placed in January?*/
+SELECT COUNT(orderID) as Januray_Sale_Num 
+FROM JanSales
+WHERE length(orderID) = 6
+AND orderID<> "Order ID";
+/*How many of those orders were for an iPhone?*/
+SELECT COUNT(Product) as Januray_iPhone_Sale_Num 
+FROM JanSales 
+WHERE Product = "iPhone"
+/*Select the customer account numbers for all the orders that were placed in February.*/
+SELECT acctnum
+FROM customers
+JOIN FebSales on customers.order_id = FebSales.orderID
+/*Which product was the cheapest one sold in January, and what was the price?*/
+SELECT Product, MIN(price)
+FROM JanSales;
+/*What is the total revenue for each product sold in January?*/
+SELECT Product, Quantity*Price
+FROM JanSales
+GROUP by Product;
+/*Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?*/
+SELECT Product, Quantity,  Quantity*Price
+FROM FebSales
+WHERE location = "548 Lincoln St, Seattle, WA 98101"
+/*How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?*/
+SELECT COUNT(acctnum), AVG(Quantity)*Price
+FROM customers
+LEFT JOIN FebSales on customers.order_id = FebSales.orderID
+WHERE Quantity > 2
+AND length(orderID) = 6
+AND orderID <> "Order ID";
+
