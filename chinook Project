@@ -1,0 +1,42 @@
+/*Which genre is the most popular genre in each country*/
+WITH temptable AS(
+SELECT customers.Country as CC1, genres.Name as gn, COUNT(genres.name) as CTG
+FROM Customers
+LEFT JOIN invoices
+ON invoices.CustomerId = Customers.CustomerId
+LEFT JOIN invoice_items
+ON invoice_items.InvoiceId = invoices.InvoiceId
+LEFT JOIN tracks
+ON tracks.TrackId = invoice_items.TrackId
+LEFT JOIN genres
+ON genres.GenreId = tracks.GenreId
+WHERE customers.Country <> "NULL"
+GROUP by customers.Country, genres.Name
+)
+
+SELECT CC1, gn, MAX(CTG) as Most_popular_genre
+FROM temptable
+GROUP by CC1
+ORDER by Most_popular DESC;
+/*Which artist is the most popular in each country*/
+WITH temptable AS(
+SELECT customers.Country as CC2, artists.name as Artist, COUNT(artists.ArtistId) as CTG
+FROM Customers
+LEFT JOIN invoices
+ON invoices.CustomerId = Customers.CustomerId
+LEFT JOIN invoice_items
+ON invoice_items.InvoiceId = invoices.InvoiceId
+LEFT JOIN tracks
+ON tracks.TrackId = invoice_items.TrackId
+LEFT JOIN albums
+ON albums.AlbumId = tracks.AlbumId
+LEFT JOIN artists
+ON artists.ArtistId = albums.ArtistId
+WHERE customers.Country <> "NULL"
+GROUP by customers.Country, artists.name
+)
+
+SELECT CC2, Artist, MAX(CTG) as Most_popular_artist
+FROM temptable
+GROUP by CC2
+ORDER by Most_popular_artist DESC;
