@@ -17,7 +17,8 @@ GROUP by customers.Country, genres.Name
 SELECT CC1, gn, MAX(CTG) as Most_popular_genre
 FROM temptable
 GROUP by CC1
-ORDER by Most_popular DESC;
+ORDER by Most_popular_genre DESC;
+
 /*Which artist is the most popular in each country*/
 WITH temptable AS(
 SELECT customers.Country as CC2, artists.name as Artist, COUNT(artists.ArtistId) as CTG
